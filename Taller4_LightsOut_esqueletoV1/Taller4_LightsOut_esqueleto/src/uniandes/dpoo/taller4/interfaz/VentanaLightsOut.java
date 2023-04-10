@@ -32,6 +32,7 @@ public class VentanaLightsOut extends JFrame{
         config.setTablero(tab);
         info.setTablero(tab);
         tableroVista.setTablero(tab, size);
+        control.setTop10(top10);
 
         addMouseListener(tableroVista);
         addMouseMotionListener(tableroVista);
@@ -57,6 +58,10 @@ public class VentanaLightsOut extends JFrame{
         tab = new Tablero(size);
         control.setTablero(tab);
         tableroVista.setTablero(tab, size);
+    }
+
+    public void cambiarJugador(String name){
+        this.info.setJugador(name);
     }
 
     public static void main(String[] args) {
