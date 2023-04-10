@@ -38,6 +38,11 @@ public class Info extends JPanel implements ActionListener, MouseListener{
         this.tab = tab;
     }
 
+    public void setJugador(String name){
+        this.jugador.setText(name);
+
+    }
+
 
     @Override
     public void actionPerformed(ActionEvent arg0) {
