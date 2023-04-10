@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import uniandes.dpoo.taller4.modelo.Tablero;
 
@@ -63,6 +64,11 @@ public class Control extends JPanel implements ActionListener{
         }
         else if(e.getSource().equals(cambiarJugador)){
             System.out.println("cambiar jugador");
+            //NameDialog d = new NameDialog(parent);
+            String S =JOptionPane.showInputDialog(parent,"Ingrese el nuevo nombre:");
+            if(S.strip() != ""){
+                
+            }
         }
     }
 

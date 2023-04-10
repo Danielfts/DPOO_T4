@@ -33,8 +33,9 @@ public class VentanaLightsOut extends JFrame{
         info.setTablero(tab);
         tableroVista.setTablero(tab, size);
 
-        this.addMouseListener(tableroVista);
-        this.addMouseListener(info);
+        addMouseListener(tableroVista);
+        addMouseMotionListener(tableroVista);
+        addMouseListener(info);
         setLayout(new BorderLayout());
         
         this.add(config, BorderLayout.NORTH);
