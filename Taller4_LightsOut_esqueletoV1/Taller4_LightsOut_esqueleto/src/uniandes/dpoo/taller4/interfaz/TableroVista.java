@@ -10,9 +10,22 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.image.BufferedImage;
 import java.lang.reflect.Array;
+import java.nio.Buffer;
 
 import uniandes.dpoo.taller4.modelo.Tablero;
+
+import java.util.Map;
+import java.util.HashMap;
+
+import java.awt.Image;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+
+import java.io.File;
+import java.io.IOException;
 
 public class TableroVista extends JPanel implements ActionListener, MouseListener, MouseMotionListener {
     private VentanaLightsOut parent;
@@ -22,8 +35,12 @@ public class TableroVista extends JPanel implements ActionListener, MouseListene
     private int ultima_fila;
     private int ultima_columna;
     private boolean[][] celdas;
+    private static Map<String, ImageIcon> cacheImagenes = new HashMap<>();
+    private static BufferedImage imagen;
+    private static Image scaled;
 
     public TableroVista(VentanaLightsOut parent) {
+        cargarImagen("Taller4_LightsOut_esqueletoV1/Taller4_LightsOut_esqueleto/data/luz.png");
         this.parent = parent;
     }
     
@@ -59,6 +76,8 @@ public class TableroVista extends JPanel implements ActionListener, MouseListene
                 int x = ((i + 1) * (hgap)) + (i * width);
                 int y = ((j + 1) * (vgap)) + (j * height);
                 g2d.fillRoundRect(x, y, width - hgap, height - vgap, diameter, diameter);
+                scaleImage(imagen, width, height);
+                //g2d.drawImage(scaled,x,y,null);
             }
         }
 
@@ -71,6 +90,20 @@ public class TableroVista extends JPanel implements ActionListener, MouseListene
         });
         
         repaint();
+    }
+
+    private static void cargarImagen(String path){
+        try {
+            imagen =  ImageIO.read(new File(path));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void scaleImage (BufferedImage img, int w, int h){
+        Image tmp = img.getScaledInstance(w, h, Image.SCALE_DEFAULT);
+        BufferedImage scale = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+        scaled = scale;
     }
     
     @Override

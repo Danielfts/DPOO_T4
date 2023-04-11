@@ -4,7 +4,6 @@ import com.formdev.flatlaf.FlatLightLaf;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-
 import java.awt.BorderLayout;
 import java.awt.Graphics2D;
 import uniandes.dpoo.taller4.modelo.*;
@@ -19,8 +18,10 @@ public class VentanaLightsOut extends JFrame{
     private Control control;
     private TableroVista tableroVista;
     private int size = 5;
+    
 
     public VentanaLightsOut(){
+        
         FlatLightLaf.install();
         top10 = new Top10();
         tab = new Tablero(size);
@@ -48,6 +49,8 @@ public class VentanaLightsOut extends JFrame{
         setSize(500, 500);
         setVisible(true);
     }
+
+
 
     public int getTabSize(){
         return size;
