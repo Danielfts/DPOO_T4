@@ -35,9 +35,8 @@ public class TableroVista extends JPanel implements ActionListener, MouseListene
     private int ultima_fila;
     private int ultima_columna;
     private boolean[][] celdas;
-    private static Map<String, ImageIcon> cacheImagenes = new HashMap<>();
     private static BufferedImage imagen;
-    private static Image scaled;
+    private static BufferedImage scaled;
 
     public TableroVista(VentanaLightsOut parent) {
         cargarImagen("Taller4_LightsOut_esqueletoV1/Taller4_LightsOut_esqueleto/data/luz.png");
@@ -77,7 +76,7 @@ public class TableroVista extends JPanel implements ActionListener, MouseListene
                 int y = ((j + 1) * (vgap)) + (j * height);
                 g2d.fillRoundRect(x, y, width - hgap, height - vgap, diameter, diameter);
                 scaleImage(imagen, width, height);
-                //g2d.drawImage(scaled,x,y,null);
+                g2d.drawImage(scaled,(int)(x+ width*0.15),(int)(y+ height*0.15),null);
             }
         }
 
@@ -101,8 +100,11 @@ public class TableroVista extends JPanel implements ActionListener, MouseListene
     }
 
     private static void scaleImage (BufferedImage img, int w, int h){
-        Image tmp = img.getScaledInstance(w, h, Image.SCALE_DEFAULT);
+        Image tmp = img.getScaledInstance((int) (0.6*w), (int) (0.6* h), Image.SCALE_SMOOTH);
         BufferedImage scale = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D bGr = scale.createGraphics();
+        bGr.drawImage(tmp, 0, 0, null);
+        bGr.dispose();
         scaled = scale;
     }
     

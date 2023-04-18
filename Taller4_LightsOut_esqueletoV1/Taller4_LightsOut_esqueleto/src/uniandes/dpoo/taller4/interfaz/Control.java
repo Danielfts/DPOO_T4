@@ -21,7 +21,7 @@ public class Control extends JPanel implements ActionListener{
     private Tablero tab;
     private Top10 top10;
     private int dificultad;
-    private JDialog top10dDialog;
+    private JDialog top10Dialog;
     
     public Control(VentanaLightsOut parent){
         super(new GridLayout(0,1));
@@ -72,7 +72,7 @@ public class Control extends JPanel implements ActionListener{
             System.out.println("top10");
             File file = new File("Taller4_LightsOut_esqueletoV1/Taller4_LightsOut_esqueleto/data/top10.csv");
             this.top10.cargarRecords(file);
-            this.top10dDialog = new Top10Dialog(top10.darRegistros());
+            this.top10Dialog = new Top10Dialog(top10.darRegistros());
         }
         else if(e.getSource().equals(cambiarJugador)){
             System.out.println("cambiar jugador");
